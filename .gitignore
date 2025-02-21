@@ -369,7 +369,7 @@ fast_lp/build/
 fast_lp/devel/
 localization_init/build/
 localization_init/devel/
-map/
+# map/
 plan_ws/build/
 plan_ws/devel/
 seibertron/*.mp4
