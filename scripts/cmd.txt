@@ -1,0 +1,52 @@
+//设置激光雷达SDK(初始化)
+cd ws_livox
+source ./devel/setup.bash
+roslaunch livox_ros_driver2 msg_MID360.launcha
+
+
+
+//设置can波特率
+cd /home/agile/bunker_ws
+source ./devel/setup.bash
+rosrun bunker_bringup bringup_can2usb.bash	//这个是需要root权限的
+
+
+//设置底盘SDK（启动导航）
+cd /home/agile/bunker_ws
+source ./devel/setup.bash
+roslaunch bunker_bringup bunker_robot_base.launch
+
+
+//启动控制
+cd /home/agile/control_ws
+source ./devel/setup.bash
+rosrun bunker_control demo05
+
+
+//建图
+cd /home/agile/fast_lp
+source ./devel/setup.bash
+roslaunch fast_lio mapping_avia.launch
+
+roslaunch aloam_velodyne fastlio_ouster64.launch
+
+
+//导航
+roslaunch fast_lio localization_mid360.launch
+rosrun fast_lio pose_tran
+rosrun fast_lio obs_get
+
+
+
+fast_lp/src/FAST_LIO_LC-master/PGO/pcd/update_map.pcd  				这个路径是建好的地图(降采样地图)
+fast_lp/src/FAST_LIO_LC-master/FAST-LIO/PCD/scans.pcd  				这个路径是fastlio建图时生成的稠密点云
+
+
+localization_init/src/FAST_LIO/pcd_L 								这个路径下放建好的离线地图（导航用）
+localization_init/src/json/target.json								这个路径放的是路径点
+localization_init/src/FAST_LIO/PCD   								这个路径下放的是每次导航创建的稠密地图
+
+control_ws/src/bunker_control/src/target.json						这个路径放的是控制用的路径点
+
+
+

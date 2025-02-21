@@ -1,0 +1,1 @@
+import{h as r}from"./index.bf5881c5.js";function t(){return r.request({url:"/hms/user/currentUser",method:"GET"})}function u(e){return r.request({url:"/hms/user/revision",method:"POST",data:e})}export{t as c,u};

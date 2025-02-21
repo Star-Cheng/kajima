@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=/home/agile/scripts_agile_1011/start.sh
+Name=KAJIMA
+Comment=ROS_Robot
+Icon=/home/agile/scripts_agile_1011/icon/icon.png

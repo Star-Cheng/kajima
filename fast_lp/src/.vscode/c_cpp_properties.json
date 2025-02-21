@@ -1,0 +1,27 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/gk/Downloads/fast_lp/devel/include/**",
+        "/home/gk/livox_ws/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/gk/Downloads/fast_lp/src/FAST_LIO_LC-master/PGO/include/**",
+        "/home/gk/Downloads/fast_lp/src/FAST_LIO_LC-master/FAST-LIO/include/**",
+        "/home/gk/livox_ws/src/FAST_LIO_MULTI-main/include/**",
+        "/home/gk/livox_ws/src/livox_laser_simulation/include/**",
+        "/home/gk/livox_ws/src/undistort/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

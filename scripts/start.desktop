@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=true
+Exec=/home/agile/localization_init/src/scripts/start.sh
+Name=Robot
+Comment=ROS_Robot
+Icon=/home/agile/localization_init/src/scripts/icon.png

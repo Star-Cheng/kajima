@@ -1,0 +1,126 @@
+import tkinter as tk
+from media import screen_shot, media_record
+import time_utils.timed_tasks as timed_tasks
+import numpy as np
+from onvif_zeep.service.Onvif_hik import Onvif_hik
+
+o = Onvif_hik(ip="192.168.1.10", username="admin", password="edge2021")
+lbl_image = None
+
+def start_recording():
+    # 这里用截图来模拟录制，实际中需要更复杂的实现
+    media_record.stop_event.clear()
+    media_record.record(lbl_image)
+    # messagebox.showinfo("录制", "录制开始（以截图模拟）...")
+
+
+def stop_recording():
+    media_record.stop_event.set()  # 设置事件，表示应该停止录制
+    # messagebox.showinfo("录制", "录制停止。")
+
+
+def capture_screenshot():
+    # 截取屏幕并显示
+    screen_shot.snap_shot()
+    # messagebox.showinfo("截图", "截图完成(模拟)。")
+
+
+def move(x, y):
+    # 模拟鼠标向上移动（需要实际实现）
+    o.move(x, y)
+    # messagebox.showinfo("移动", "鼠标向上移动（模拟）")
+
+
+def on_release():
+    o.stop()
+
+
+def zoom_in():
+    # 放大功能（假设为图片或视图的放大，需要实际实现）
+    o.zoom(1)
+    # messagebox.showinfo("缩放", "放大（模拟）")
+
+
+def zoom_out():
+    # 缩小功能（假设为图片或视图的缩小，需要实际实现）
+    o.zoom(-1)
+    # messagebox.showinfo("缩放", "缩小（模拟）")
+
+
+def goto_preset(prest):
+    # 跳转预置点功能
+    o.goto_preset(prest)
+
+
+def set_preset(prest):
+    o.set_presets("prest" + prest, prest)
+
+
+if __name__ == '__main__':
+    # record()
+    # while True:
+    #     time_utils.sleep(2)
+    # filetUpload()
+    # 启动 Flask 应用和录制视频的线程（注意：这里需要你自己管理线程）
+    # ...
+    timed_tasks.start_task()
+    # start_recording()
+    # 创建主窗口
+    root = tk.Tk()
+    root.title("屏幕控制工具")
+
+    # 添加按钮
+    tk.Button(root, text="开始录制", command=start_recording).grid(row=0, column=0, padx=10, pady=10)
+    tk.Button(root, text="停止录制", command=stop_recording).grid(row=0, column=1, padx=10, pady=10)
+    tk.Button(root, text="截图", command=capture_screenshot).grid(row=0, column=2, padx=10, pady=10)
+
+    # tk.Button(root, text="放大", command=lambda: zoom_in()).grid(row=1, column=0, adx=10, pady=10)
+    # tk.Button(root, text="缩小", command=lambda: zoom_out()).grid(row=1, column=2, padx=10, pady=10)
+    up_button = tk.Button(root, text="上", command=lambda: move(0, 1))
+    down_button = tk.Button(root, text="下", command=lambda: move(0, -1))
+    left_button = tk.Button(root, text="左", command=lambda: move(-1, 0))
+    right_button = tk.Button(root, text="右", command=lambda: move(1, 0))
+
+    up_button.grid(row=2, column=1, padx=10, pady=10)
+    down_button.grid(row=4, column=1, padx=10, pady=10)
+    left_button.grid(row=3, column=0, padx=10, pady=10)
+    right_button.grid(row=3, column=2, padx=10, pady=10)
+
+    # up_button.bind("ButtonPress>", move(0, 1))
+    # down_button.bind("ButtonPress>",  move(0, -1))
+    # left_button.bind("<ButtonPress>", move(-1, 0))
+    # right_button.bind("ButtonPress>", move(1, 0))
+    #
+    # up_button.bind("<ButtonRelease>", on_release)
+    # down_button.bind("<ButtonRelease>", on_release)
+    # left_button.bind("<ButtonRelease>", on_release)
+    # right_button.bind("<ButtonRelease>", on_release)
+
+    tk.Button(root, text="goto_prest1", command=lambda: goto_preset(1)).grid(row=5, column=0, padx=10, pady=10)
+    tk.Button(root, text="goto_prest2", command=lambda: goto_preset(2)).grid(row=5, column=1, padx=10, pady=10)
+    tk.Button(root, text="goto_prest3", command=lambda: goto_preset(3)).grid(row=5, column=2, padx=10, pady=10)
+    tk.Button(root, text="goto_prest4", command=lambda: goto_preset(4)).grid(row=6, column=0, padx=10, pady=10)
+    tk.Button(root, text="goto_prest5", command=lambda: goto_preset(5)).grid(row=6, column=1, padx=10, pady=10)
+    tk.Button(root, text="goto_prest6", command=lambda: goto_preset(6)).grid(row=6, column=2, padx=10, pady=10)
+    tk.Button(root, text="goto_prest7", command=lambda: goto_preset(7)).grid(row=7, column=0, padx=10, pady=10)
+    tk.Button(root, text="goto_prest8", command=lambda: goto_preset(8)).grid(row=7, column=1, padx=10, pady=10)
+    tk.Button(root, text="goto_prest9", command=lambda: goto_preset(9)).grid(row=7, column=2, padx=10, pady=10)
+    tk.Button(root, text="set_prest1", command=lambda: goto_preset(1)).grid(row=5, column=3, padx=10, pady=10)
+    tk.Button(root, text="set_prest2", command=lambda: goto_preset(2)).grid(row=5, column=4, padx=10, pady=10)
+    tk.Button(root, text="set_prest3", command=lambda: goto_preset(3)).grid(row=5, column=5, padx=10, pady=10)
+    tk.Button(root, text="set_prest4", command=lambda: goto_preset(4)).grid(row=6, column=3, padx=10, pady=10)
+    tk.Button(root, text="set_prest5", command=lambda: goto_preset(5)).grid(row=6, column=4, padx=10, pady=10)
+    tk.Button(root, text="set_prest6", command=lambda: goto_preset(6)).grid(row=6, column=5, padx=10, pady=10)
+    tk.Button(root, text="set_prest7", command=lambda: goto_preset(7)).grid(row=7, column=3, padx=10, pady=10)
+    tk.Button(root, text="set_prest8", command=lambda: goto_preset(8)).grid(row=7, column=4, padx=10, pady=10)
+    tk.Button(root, text="set_prest9", command=lambda: goto_preset(9)).grid(row=7, column=5, padx=10, pady=10)
+    # 添加一个Label来显示视频位置
+    video_label = tk.Label(root, text=f"视频位置:", font=("Arial", 12))
+    video_label.grid(row=9, column=0, sticky='w', padx=10, pady=10)  # sticky='w'使标签左对齐
+
+    frame = np.zeros((240, 320, 3), dtype=np.uint8)  # 初始化帧，大小根据实际情况调整
+    lbl_image = tk.Label(root)
+    lbl_image.grid(row=10, column=0,columnspan=6, sticky='w', padx=10, pady=10)
+
+    root.mainloop()
+    # app.run(host='0.0.0.0', port=5000)  # 注意：在生产环境中，不要使用 0.0.0.0

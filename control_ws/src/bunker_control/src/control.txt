@@ -1,0 +1,37 @@
+/home/aoostar/control_ws/src/bunker_control/src
+在控制路径下添加demo17.cpp 以及两个json文件
+
+在cmakelist中增加以下内容
+## 添加可执行文件
+add_executable(demo17 src/demo17.cpp)
+
+## 将目标文件与所需的库链接
+target_link_libraries(demo17
+  ${catkin_LIBRARIES}
+  nlohmann_json::nlohmann_json  # 链接JSON库
+)
+
+## 安装可执行文件
+install(TARGETS demo17
+  RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
+
+在demo17.cpp中173 189 210行三处有读取路径 记得修改（应该只有主机名字有区别
+
+在新的规定下 路径点分为三种 normal narrow door
+例如
+[
+    {"x": 18.0, "y": -0.6, "tag": "normal"},
+    {"x": 18.19, "y": 10.76, "tag": "normal"},
+    {"x": 18.23, "y": 20.81, "tag": "door"},
+    {"x": 12.0, "y": 21.01, "tag": "narrow"},
+    {"x": 18.23, "y": 20.81, "tag": "narrow"},
+    {"x": 18.19, "y": 10.76, "tag": "narrow"},
+    {"x": 18.0, "y": -0.6, "tag": "normal"},
+    {"x": 0.0, "y": 0.0, "tag": "normal"}
+]
+
+normal 有避障功能 限速0.8 如需修改限速 在代码第670 671行修改
+narrow 无避障功能 限速0.5 如需修改限速 在代码第660 661行修改
+door   无避障功能 限速0.3 如需修改限速 在代码第665 666行修改
+

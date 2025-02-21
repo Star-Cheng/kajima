@@ -1,0 +1,69 @@
+common:
+    lid_topic:  "/livox/lidar"
+    imu_topic:  "/livox/imu"
+    time_sync_en: false         # ONLY turn on when external time synchronization is really not possible
+
+preprocess:
+    lidar_type: 1                # 1 for Livox serials LiDAR, 2 for Velodyne LiDAR, 3 for ouster LiDAR, 
+    scan_line: 6
+    blind: 0.1
+
+mapping:
+    acc_cov: 0.1
+    gyr_cov: 0.1
+    b_acc_cov: 0.0001
+    b_gyr_cov: 0.0001
+    fov_degree:    180
+    det_range:     100.0
+    extrinsic_T: [ 0.05512 ,0.02226 ,-0.0297 ] # LiDAR frame -> IMU frame
+    extrinsic_R: [ 1, 0, 0,
+                   0, 1, 0,
+                   0, 0, 1]
+
+publish:     
+    scan_publish_en:  1       # 'false' will close all the point cloud output
+    dense_publish_en: 1       # false will low down the points number in a global-frame point clouds scan.
+    scan_bodyframe_pub_en: 1  # output the point cloud scans in IMU-body-frame
+
+pcd_save:
+    pcd_save_en: true
+    interval: -1       
+    
+purelocalization:
+    map_path: "/home/agilex/localization_init/src/FAST_LIO/pcd_L/update_map.pcd"
+    enable: true
+    startX: 0
+    startY: 0
+    startZ: 0
+base2cam:
+    x2: 0
+    y2: 0
+    z2: 0 
+    qx: 0
+    qy: 0
+    qz: 0
+    qw: 1
+
+
+pose_transform:
+    pcd_path: "/home/agilex/localization_init/src/FAST_LIO/pcd_L/update_map.pcd"
+    json_path: "/home/agilex/localization_init/src/json/target.json"
+    frame_thresholds: 100
+    z_thresholds: 10
+    startx: 0
+    starty: 0
+    startz: 0
+    startqx: 0
+    startqy: 0
+    startqz: 0
+    startqw: 1
+    x2: 0
+    y2: 0
+    z2: 0
+    qx: 0
+    qy: 0
+    qz: 0
+    qw: 1
+    iter_times: 200
+    update2_time: 100
+    obstacle_distance: 0.6

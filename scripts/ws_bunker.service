@@ -1,0 +1,12 @@
+[Unit]
+Description=ROS Bunker node
+After=network.target
+
+[Service]
+Type=simple
+User=agile
+ExecStart=/home/agile/ws_robot/scripts/ws_bunker.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

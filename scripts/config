@@ -1,0 +1,7 @@
+ws_root=/home/agile
+ws_fastlio=/home/agile/fast_lp
+ws_location=/home/agile/localization_init
+ws_livox=/home/agile/ws_livox
+ws_control=/home/agile/control_ws
+ws_bunker=/home/agile/bunker_ws
+master_ip=hms@192.168.1.25

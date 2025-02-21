@@ -1,0 +1,22 @@
+<launch>
+    <param name="/map_update_with_teb/teb_planner/enable_homotopy_class_planning" type="bool" value="False"/> 
+    <param name="/map_update_with_teb/local_costmap/origin_x" type="double" value="-5.0"/> 
+    <param name="/map_update_with_teb/local_costmap/origin_y" type="double" value="-5.0"/> 
+
+    <param name="/map_update_with_teb/teb_planner/max_vel_x" type="double" value="0.30"/> 
+    <!-- <param name="/map_update_with_teb/teb_planner/max_vel_x_backwards" type="double" value="0.0"/>  -->
+    <param name="/map_update_with_teb/teb_planner/max_vel_theta" type="double" value="0.20"/>
+    <param name="/map_update_with_teb/teb_planner/min_obstacle_dist" type="double" value="0.70"/>
+    <param name="/map_update_with_teb/teb_planner/inflation_dist" type="double" value="0.75"/> 
+    <param name="/map_update_with_teb/teb_planner/dynamic_obstacle_inflation_dist" type="double" value="0.80"/> 
+    <param name="/map_update_with_teb/teb_planner/xy_goal_tolerance" type="double" value="0.01"/> 
+    <param name="/map_update_with_teb/teb_planner/yaw_goal_tolerance" type="double" value="0.5"/>
+    <!-- <param name="/map_update_with_teb/teb_planner/dt_ref" type="double" value="0.45"/> -->
+    <param name="/map_update_with_teb/local_costmap/robot_radius" type="double" value="0.3"/>
+
+
+    <!-- <node pkg="visualize" name="map_pub" type="map_pub" output="screen"/> -->
+    <node pkg="local_plan" name="odom" type="odom" output="screen"/>
+    <node pkg="local_plan" name="map_tf" type="map_tf" output="screen"/>
+    <!-- <node pkg="visualize" name="teb_test" type="teb_test" output="screen"/> -->
+</launch>

@@ -1,0 +1,16 @@
+{
+    "controllers": [
+        {
+            "name": "Controller_x",
+            "P": 0.3,
+            "I": 0.7,
+            "D": 0.0
+        },
+        {
+            "name": "Controller_z",
+            "P": 0.040,
+            "I": 0.0035,
+            "D": 0.01
+        }
+    ]
+}
